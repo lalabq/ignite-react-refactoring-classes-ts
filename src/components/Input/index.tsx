@@ -23,11 +23,6 @@ export function Input({ name, placeholder } : InputProps) {
 
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
-
-    console.log('inputRef')
-    console.log(inputRef)
-    console.log(inputRef.current?.value)
-
     setIsFilled(!!inputRef.current?.value);
   }, []);
 
