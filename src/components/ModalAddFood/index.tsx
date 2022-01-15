@@ -5,9 +5,11 @@ import { Modal } from '../Modal';
 import { Input } from '../Input';
 
 interface Food {
+  id: number;
   name: string;
   description: string;
   price: number;
+  available: boolean;
   image: string;
 }
 

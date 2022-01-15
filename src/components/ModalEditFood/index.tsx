@@ -23,7 +23,6 @@ interface ModalEditFoodProps {
 export function ModalEditFood({ isOpen, setIsOpen, editingFood, handleUpdateFood } : ModalEditFoodProps) {
   
   const handleSubmit = async (data : Food) => {
-    console.log('food', data);
     handleUpdateFood(data);
     setIsOpen();
   };
