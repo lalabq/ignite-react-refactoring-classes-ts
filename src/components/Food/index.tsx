@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 import { Container } from './styles';
 import { api } from '../../services/api';
 
-interface Food {
+interface FoodData {
   id: number;
   name: string;
   description: string;
@@ -13,15 +13,18 @@ interface Food {
 }
 
 interface FoodProps {
-  food: Food;
+  food: FoodData;
   handleDelete: (id: number) => void;
-  handleEditFood: (food: Food) => void;
+  handleEditFood: (food: FoodData) => void;
 }
 
-
 export function Food({ food, handleDelete, handleEditFood } : FoodProps) {
-  
+
   const [foodProps, setFoodProps] = useState(food);
+
+  useEffect(() => {
+    setFoodProps({...food});
+  }, [food]);
 
   async function toggleAvailable() {
 
@@ -35,7 +38,7 @@ export function Food({ food, handleDelete, handleEditFood } : FoodProps) {
   }
 
   return (
-    <Container available={foodProps.available}>
+    <Container available={foodProps.available} key={foodProps.id}>
       <header>
         <img src={foodProps.image} alt={foodProps.name} />
       </header>
